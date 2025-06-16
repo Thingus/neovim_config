@@ -1,0 +1,7 @@
+require("config.lazy")
+require("config.conform")
+require("config.keymaps")
+require("config.rust_analyzer")
+require("config.theming")
+require("config.lsp_diagnostics")
+require("config.auto_session")
