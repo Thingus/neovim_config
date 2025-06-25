@@ -1,9 +1,11 @@
 return {
-	-- Theme?
+	-- Theme
 	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 
+	-- Icons
 	{ "nvim-tree/nvim-web-devicons", lazy = true },
 
+	-- Surround (ysiw, ect)
 	{
 		"kylechui/nvim-surround",
 		event = "VeryLazy",
@@ -14,7 +16,7 @@ return {
 		end,
 	},
 
-	--treesitter
+	--treesitter (roots most of the lsp stuff)
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = function()
@@ -22,7 +24,18 @@ return {
 		end,
 		config = function()
 			require("nvim-treesitter.configs").setup({
-				ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "python", "javascript", "html", "rust" },
+				ensure_installed = {
+					"c",
+					"lua",
+					"vim",
+					"vimdoc",
+					"query",
+					"python",
+					"javascript",
+					"html",
+					"rust",
+					"css",
+				},
 				auto_install = false,
 				highlight = { enable = true, additional_vim_regex_highlighting = false },
 				indent = { enable = true },
@@ -69,7 +82,7 @@ return {
 		end,
 	},
 
-	--mason
+	--mason; lsp manager
 	{
 		"williamboman/mason.nvim",
 	},
@@ -175,13 +188,13 @@ return {
 		---@type AutoSession.Config
 	},
 
-	-- lualine: prettier bottom barjjj
+	-- lualine: prettier bottom bar
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
 
-	-- autoclose: auto
+	-- autoclose: auto-bracket closing
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
@@ -194,9 +207,11 @@ return {
 	{
 		"kiyoon/jupynium.nvim",
 		build = "uv pip install . --python=$HOME/.virtualenvs/jupynium/bin/python",
+		dependencies = {
+			"rcarriga/nvim-notify", -- optional
+			"stevearc/dressing.nvim", -- optional, UI for :JupyniumKernelSelect
+		},
 	},
-	"rcarriga/nvim-notify", -- optional
-	"stevearc/dressing.nvim", -- optional, UI for :JupyniumKernelSelect
 
 	-- FloatTerm; floating terminal for quick things
 	{
