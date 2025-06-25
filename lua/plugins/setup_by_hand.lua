@@ -2,7 +2,7 @@ return {
 	-- Theme?
 	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 
-	{ "nvim-tree/nvim-web-devicons", lazy = true},
+	{ "nvim-tree/nvim-web-devicons", lazy = true },
 
 	{
 		"kylechui/nvim-surround",
@@ -23,16 +23,16 @@ return {
 		config = function()
 			require("nvim-treesitter.configs").setup({
 				ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "python", "javascript", "html", "rust" },
-				auto_install = false, 
+				auto_install = false,
 				highlight = { enable = true, additional_vim_regex_highlighting = false },
 				indent = { enable = true },
 				incremental_selection = {
 					enable = true,
 					keymaps = {
-						init_selection = "<C-n>",
-						node_incremental = "<C-n>",
-						scope_incremental = "<C-s>",
-						node_decremental = "<C-m>",
+						init_selection = "<leader>n",
+						node_incremental = "<leader>n",
+						scope_incremental = "<leader>s",
+						node_decremental = "<leader>m",
 					},
 				},
 			})
@@ -61,7 +61,7 @@ return {
 			require("mason").setup()
 			local mason_lspconfig = require("mason-lspconfig")
 			mason_lspconfig.setup({
-				ensure_installed = { "pyright", "html" },
+				ensure_installed = { "pyright", "html", "eslint" },
 			})
 			require("lspconfig").pyright.setup({
 				capabilities = capabilities,
@@ -175,9 +175,31 @@ return {
 		---@type AutoSession.Config
 	},
 
-	-- lualine: prettier bottom bar
+	-- lualine: prettier bottom barjjj
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
+	},
+
+	-- autoclose: auto
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config = true,
+		-- use opts = {} for passing setup options
+		-- this is equivalent to setup({}) function
+	},
+
+	-- Jupynium; Jupyter notebook puppetteer
+	{
+		"kiyoon/jupynium.nvim",
+		build = "uv pip install . --python=$HOME/.virtualenvs/jupynium/bin/python",
+	},
+	"rcarriga/nvim-notify", -- optional
+	"stevearc/dressing.nvim", -- optional, UI for :JupyniumKernelSelect
+
+	-- FloatTerm; floating terminal for quick things
+	{
+		"voldikss/vim-floaterm",
 	},
 }

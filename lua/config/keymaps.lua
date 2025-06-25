@@ -8,6 +8,12 @@ vim.o.smartindent = true
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
 
+-- Window movement
+vim.keymap.set("n", "<C-h>", "<C-w>h")
+vim.keymap.set("n", "<C-j>", "<C-w>j")
+vim.keymap.set("n", "<C-k>", "<C-w>k")
+vim.keymap.set("n", "<C-l>", "<C-w>l")
+
 -- Autocomplete via luasnip
 local ls = require("luasnip")
 
@@ -42,7 +48,7 @@ vim.keymap.set({ "n" }, "<leader>g", function()
 		action = "close",
 		source = "filesystem",
 	})
-end, { desc = "Toggles and focusses the Neotree pane" })
+end, { desc = "Closes the Neotree pane" })
 
 -- Neotree file browser (hjkl for nav, ' f' for close)
 require("neo-tree").setup({
@@ -60,3 +66,21 @@ require("neo-tree").setup({
 vim.keymap.set("n", "<leader>td", function()
 	vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end, { silent = true, noremap = true })
+
+-- Lsp diagnostic show
+vim.keymap.set("n", "<leader>a", function()
+	vim.diagnostic.open_float()
+end)
+
+-- Lsp gotos
+vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+
+-- Swanky autorename from https://blog.viktomas.com/graph/neovim-lsp-rename-normal-mode-keymaps/
+vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename)
+
+-- Instant terminal
+vim.keymap.set({ "n" }, "<leader>t", ":FloatermNew<CR>")
+
+-- Session picker
+vim.keymap.set({ "n" }, "<leader>r", ":SessionSearch<CR>")

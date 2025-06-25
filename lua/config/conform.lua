@@ -3,7 +3,7 @@ require("conform").setup({
 		lua = { "stylua" },
 		python = { "black" },
 		rust = { "rustfmt", lsp_format = "fallback" },
-		javascript = { "prettier", stop_after_first = true },
+		javascript = { "eslint", "prettier", stop_after_first = true },
 		html = { "prettier" },
 		css = { "prettier" },
 		jinja = { "jinja-lsp" },
