@@ -33,7 +33,6 @@ return {
 					"python",
 					"javascript",
 					"html",
-					"rust",
 					"css",
 				},
 				auto_install = false,
@@ -79,6 +78,9 @@ return {
 			require("lspconfig").pyright.setup({
 				capabilities = capabilities,
 			})
+			require("lspconfig").tailwindcss.setup({
+				capabilities = capabilities,
+			})
 		end,
 	},
 
@@ -87,7 +89,7 @@ return {
 		"williamboman/mason.nvim",
 	},
 
-	--
+	--Completion plugin
 	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
@@ -174,6 +176,9 @@ return {
 	-- rustaceanvim: Rust dev plugin
 	{
 		"mrcjkb/rustaceanvim",
+    dependencies = {
+      "rust-lang/rust-analyzer"
+    },
 		version = "^6", -- Recommended
 		lazy = false, -- This plugin is already lazy
 	},
@@ -216,5 +221,30 @@ return {
 	-- FloatTerm; floating terminal for quick things
 	{
 		"voldikss/vim-floaterm",
+	},
+
+	-- Molten; ipython plugin
+	{
+		"benlubas/molten-nvim",
+		version = "^1.0.0",
+		build = ":UpdateRemotePlugins",
+		init = function()
+			vim.g.molten_output_win_max_height = 12
+		end,
+	},
+
+	--jupytext; opens .ipynbs as regular readable notebooks
+	{
+		"GCBallesteros/jupytext.nvim",
+		config = true,
+		-- Depending on your nvim distro or config you may need to make the loading not lazy
+		--   -- lazy=false,
+	},
+
+	--telescope; jumps about the place using fzf
+	{
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.8",
+		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 }

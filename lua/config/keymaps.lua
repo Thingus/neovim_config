@@ -8,6 +8,12 @@ vim.o.smartindent = true
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
 
+-- Opening vsplits to the right
+vim.o.splitright = true
+
+-- Opening splits at the bottom
+vim.o.splitbelow = true
+
 -- Window movement
 vim.keymap.set("n", "<C-h>", "<C-w>h")
 vim.keymap.set("n", "<C-j>", "<C-w>j")
@@ -35,7 +41,7 @@ end, { silent = true })
 
 -- Neotree
 local nt = require("neo-tree.command")
-vim.keymap.set({ "n" }, "<leader>f", function()
+vim.keymap.set({ "n" }, "<leader>F", function()
 	nt.execute({
 		action = "focus",
 		source = "filesystem",
@@ -62,6 +68,12 @@ require("neo-tree").setup({
 	},
 })
 
+local builtin = require("telescope.builtin")
+vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
+vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" })
+vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" })
+vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" })
+
 -- Lsp diagnostic toggle
 vim.keymap.set("n", "<leader>td", function()
 	vim.diagnostic.enable(not vim.diagnostic.is_enabled())
@@ -77,10 +89,19 @@ vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 
 -- Swanky autorename from https://blog.viktomas.com/graph/neovim-lsp-rename-normal-mode-keymaps/
-vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename)
+vim.keymap.set("n", "<leader>e", vim.lsp.buf.rename)
 
 -- Instant terminal
 vim.keymap.set({ "n" }, "<leader>t", ":FloatermNew<CR>")
 
--- Session picker
-vim.keymap.set({ "n" }, "<leader>r", ":SessionSearch<CR>")
+-- Home- grown run cmd (context dependent)
+filetype_runners = require("config.filetype_run")
+vim.keymap.set({ "n" }, "<leader>r", function()
+	filetype_runners(vim.bo.filetype)
+end)
+
+-- Session picker from auto_session
+vim.keymap.set({ "n" }, "<leader>u", ":SessionSearch<CR>")
+
+-- norm command for selecting text in a Jupyvim cell
+-- norm ?# %%^MV/# %%^Mk
