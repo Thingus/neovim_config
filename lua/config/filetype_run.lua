@@ -5,13 +5,14 @@ local filetype_run = {
 		python_filetype_run()
 	end,
 	["lua"] = "FloatermNew lua",
+	["elixir"] = "FloatermNew --autoclose=0 elixir %",
 }
 
 function python_filetype_run()
 	if vim.api.nvim_buf_get_name(0):match(".ipynb$") then
 		vim.cmd("MoltenReevaluateAll")
 	else
-		vim.cmd("FloatermNew python %")
+		vim.cmd("FloatermNew --pwd=<root> --autoclose=0 uv run %")
 	end
 end
 

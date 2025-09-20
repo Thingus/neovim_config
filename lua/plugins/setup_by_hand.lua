@@ -176,13 +176,12 @@ return {
 	-- rustaceanvim: Rust dev plugin
 	{
 		"mrcjkb/rustaceanvim",
-    dependencies = {
-      "rust-lang/rust-analyzer"
-    },
+		dependencies = {
+			"rust-lang/rust-analyzer",
+		},
 		version = "^6", -- Recommended
 		lazy = false, -- This plugin is already lazy
 	},
-	--
 
 	-- auto-session; cwd-based session manager
 	{
@@ -246,5 +245,14 @@ return {
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.8",
 		dependencies = { "nvim-lua/plenary.nvim" },
+	},
+
+	--live-preview; for webdev
+	{
+		"brianhuster/live-preview.nvim",
+		dependencies = {
+			-- You can choose one of the following pickers
+			"nvim-telescope/telescope.nvim",
+		},
 	},
 }

@@ -24,7 +24,11 @@ vim.keymap.set("n", "<C-l>", "<C-w>l")
 local ls = require("luasnip")
 
 vim.keymap.set({ "i" }, "<Tab>", function()
-	ls.expand()
+	-- if ls.expand_or_jumpable() then
+	ls.expand_or_jump()
+	-- else
+	--   '<Tab>'
+	-- end
 end, { silent = true })
 vim.keymap.set({ "i", "s" }, "<Tab>", function()
 	ls.jump(1)
@@ -101,7 +105,7 @@ vim.keymap.set({ "n" }, "<leader>r", function()
 end)
 
 -- Session picker from auto_session
-vim.keymap.set({ "n" }, "<leader>u", ":SessionSearch<CR>")
+vim.keymap.set({ "n" }, "<leader>u", ":AutoSession search<CR>")
 
 -- norm command for selecting text in a Jupyvim cell
 -- norm ?# %%^MV/# %%^Mk
