@@ -72,9 +72,6 @@ return {
 
 			require("mason").setup()
 			local mason_lspconfig = require("mason-lspconfig")
-			mason_lspconfig.setup({
-				ensure_installed = { "pyright", "html", "eslint" },
-			})
 			require("lspconfig").pyright.setup({
 				capabilities = capabilities,
 			})
@@ -255,4 +252,12 @@ return {
 			"nvim-telescope/telescope.nvim",
 		},
 	},
+
+	--marp; for presentations (lets try it)
+	{
+		"mpas/marp-nvim",
+		lazy = false,
+	},
+
+	--lazy
 }
