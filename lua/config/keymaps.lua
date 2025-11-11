@@ -58,7 +58,7 @@ vim.keymap.set({ "n" }, "<leader>F", function()
 		position = "left",
 	})
 end, { desc = "Toggles and focusses the Neotree pane" })
-vim.keymap.set({ "n" }, "<leader>g", function()
+vim.keymap.set({ "n" }, "<leader>G", function()
 	nt.execute({
 		action = "close",
 		source = "filesystem",
