@@ -104,6 +104,9 @@ vim.keymap.set("n", "<leader>e", vim.lsp.buf.rename)
 -- Instant terminal
 vim.keymap.set({ "n" }, "<leader>t", ":FloatermNew<CR>")
 
+-- Lazygit
+vim.keymap.set({ "n" }, "<leader>gg", ":FloatermNew --height=0.8 --width=0.8 lazygit<CR>")
+
 -- Home- grown run cmd (context dependent)
 filetype_runners = require("config.filetype_run")
 vim.keymap.set({ "n" }, "<leader>r", function()
