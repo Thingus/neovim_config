@@ -75,6 +75,7 @@ return {
 			vim.lsp.config("pyright", {
 				capabilities = capabilities,
 			})
+			vim.lsp.enable("pyright")
 			vim.lsp.config("tailwindcss", {
 				capabilities = capabilities,
 			})
