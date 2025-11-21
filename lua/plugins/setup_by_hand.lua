@@ -260,5 +260,14 @@ return {
 		lazy = false,
 	},
 
+	--strudel. For strudelling
+	{
+		"gruvw/strudel.nvim",
+		build = "npm install",
+		config = function()
+			require("strudel").setup()
+		end,
+	},
+
 	--lazy
 }
