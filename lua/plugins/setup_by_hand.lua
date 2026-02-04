@@ -72,10 +72,15 @@ return {
 
 			require("mason").setup()
 			local mason_lspconfig = require("mason-lspconfig")
-			vim.lsp.config("pyright", {
-				capabilities = capabilities,
-			})
-			vim.lsp.enable("pyright")
+			-- vim.lsp.config("ruff", {
+			-- 	capabilities = capabilities,
+			-- })
+			vim.lsp.enable("ruff")
+			-- vim.lsp.config("basedpyright", {
+			-- 	capabilities = capabilities,
+			-- })
+			vim.lsp.enable("ty")
+			-- vim.lsp.enable("basedpyright")
 			vim.lsp.config("tailwindcss", {
 				capabilities = capabilities,
 			})
