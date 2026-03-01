@@ -84,6 +84,22 @@ return {
 			vim.lsp.config("tailwindcss", {
 				capabilities = capabilities,
 			})
+			vim.lsp.config("typescript-language-server", {
+				cmd = { "typescript-language-server", "--stdio" },
+				filetypes = { "typescript", "javascript" },
+				capabilities = capabilities,
+			})
+			vim.lsp.enable("typescript-language-server")
+			vim.lsp.config("html-lsp", {
+				cmd = { "vscode-html-language-server", "--stdio" },
+				filetypes = { "html", "css" },
+			})
+			vim.lsp.enable("html-lsp")
+			vim.lsp.config("docker-language-server", {
+				cmd = { "docker-language-server", "start", "--stdio" },
+				filetypes = { "dockerfile", "docker-compose", "docker-bake" },
+			})
+			vim.lsp.enable("docker-language-server")
 		end,
 	},
 
