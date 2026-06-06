@@ -26,8 +26,8 @@ vim.keymap.set("t", "<C-k>", "<C-\\><C-N><C-w>k")
 vim.keymap.set("t", "<C-l>", "<C-\\><C-N><C-w>l")
 
 -- Autocomplete via luasnip
-local ls = require("luasnip")
 
+local ls = require("luasnip")
 vim.keymap.set({ "i" }, "<Tab>", function()
 	-- if ls.expand_or_jumpable() then
 	ls.expand_or_jump()
@@ -77,6 +77,10 @@ require("neo-tree").setup({
 	},
 })
 
+-- Leap jumping around
+vim.keymap.set({ "n", "x", "o" }, "f", "<Plug>(leap)")
+vim.keymap.set("n", "F", "<Plug>(leap-from-window)")
+
 -- Telescope jumping around
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
@@ -97,6 +101,11 @@ end)
 -- Lsp gotos
 vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+
+-- Manual autoformat
+vim.keymap.set({ "n", "v" }, "<leader>w", function()
+	vim.lsp.buf.format()
+end)
 
 -- Swanky autorename from https://blog.viktomas.com/graph/neovim-lsp-rename-normal-mode-keymaps/
 vim.keymap.set("n", "<leader>e", vim.lsp.buf.rename)
