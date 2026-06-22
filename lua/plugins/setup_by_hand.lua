@@ -179,6 +179,12 @@ return {
       -- fill any relevant options here
     },
   },
+	-- Trouble; lsp bottom-bar project check
+	{
+		"folke/trouble.nvim",
+		opts = {}, -- for default options, refer to the configuration section for custom setup.
+		cmd = "Trouble"
+	},
 
   -- rustaceanvim: Rust dev plugin
   {
