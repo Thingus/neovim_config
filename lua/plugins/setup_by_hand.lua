@@ -263,7 +263,7 @@ return {
     -- nvim-origame; LSP-powered folding
     {
         "chrisgrieser/nvim-origami",
-        event = "VeryLazy",
+        -- event = "VeryLazy",
         opts = {}
     },
 
