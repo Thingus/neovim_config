@@ -30,7 +30,7 @@
   "nvim-web-devicons": { "branch": "master", "commit": "dad71387de386a946b123079d0e53f23028f3abd" },
   "plenary.nvim": { "branch": "master", "commit": "74b06c6c75e4eeb3108ec01852001636d85a932b" },
   "rainbow-delimiters.nvim": { "branch": "master", "commit": "a798325b7f36acc62741d1029930a7b96d4dd4bf" },
-  "rust-analyzer": { "branch": "master", "commit": "2b4c2c3bbda55930a97ae6bf1bfd82e4f385da6d" },
+  "rust-analyzer": { "branch": "master", "commit": "a1949dcc3f10d766bbea06ec86f924959694f01b" },
   "rustaceanvim": { "branch": "master", "commit": "88575b98bb9937fb9983ddec5e532b67e75ce677" },
   "telescope.nvim": { "branch": "master", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },
   "trouble.nvim": { "branch": "main", "commit": "bd67efe408d4816e25e8491cc5ad4088e708a69a" },
