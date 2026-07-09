@@ -39,6 +39,7 @@ return {
 					"python",
 					"javascript",
 					"typescript",
+					"tsx",
 					"html",
 					"css",
 				},
@@ -253,6 +254,18 @@ return {
 			vim.g.molten_output_win_max_height = 12
 		end,
 	},
+
+	-- rainbow-delimiters: Rainbow braces. Note; configured in theming.lua
+	{
+		"hiphish/rainbow-delimiters.nvim",
+	},
+
+    -- nvim-origame; LSP-powered folding
+    {
+        "chrisgrieser/nvim-origami",
+        event = "VeryLazy",
+        opts = {}
+    },
 
 	--jupytext; opens .ipynbs as regular readable notebooks
 	{
